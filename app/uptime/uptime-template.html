@@ -1,0 +1,25 @@
+<ol class="breadcrumb">
+  <li><a href="home">Home</a></li>
+  <li><a href="uptime">Uptime</a></li>
+</ol>
+
+<h1>Server Uptime</h1>
+
+<button class="btn btn-primary" ng-click="manualRefresh()">Refresh Now</button>
+<p>Last updated: {{lastUpdated | date:'medium'}}</p>
+<p>Auto-refreshes every 5 minutes</p>
+
+<table class="table table-striped">
+  <thead>
+  <tr>
+    <th>Server</th>
+    <th>Uptime</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr ng-repeat="(server, uptime) in uptimeData">
+    <td>{{server}}</td>
+    <td>{{uptime}}</td>
+  </tr>
+  </tbody>
+</table>

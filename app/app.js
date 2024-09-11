@@ -36,7 +36,8 @@ angular
     'app-mode-services',
     'smart-table',
     'angular.filter',
-    'ui.checkbox'
+    'ui.checkbox',
+    'uptime-controller'
   ])
   .config(['$routeProvider', '$resourceProvider', 'cfpLoadingBarProvider', '$locationProvider',
       function($routeProvider, $resourceProvider, cfpLoadingBarProvider, $locationProvider){
@@ -82,6 +83,10 @@ angular
       when('/image/:imageId/tag/:repositoryUser?/:repositoryName?', {
         templateUrl: 'tag/create-tag.html',
         controller: 'CreateTagController',
+      }).
+      when('/uptime', {
+        templateUrl: 'uptime/uptime.html',
+        controller: 'UptimeController',
       }).
       otherwise({
         redirectTo: '/home'
