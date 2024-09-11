@@ -1,29 +1,60 @@
 <ol class="breadcrumb">
   <li><a href="home">Home</a></li>
-  <li><a href="uptime">Uptime</a></li>
+  <li class="active">Uptime</li>
 </ol>
 
-<h1>Server Uptime</h1>
+<div class="panel panel-default">
+  <div class="panel-body">
+    <div class="row">
+      <div class="col-xs-6">
+        <h1 style="margin-top: 0;">Server Uptime</h1>
+      </div>
+      <div class="col-xs-6 text-right">
+        <button class="btn btn-primary" ng-click="manualRefresh()">
+          <i class="glyphicon glyphicon-refresh"></i> Refresh Now
+        </button>
+      </div>
+    </div>
+    <p class="text-muted">
+      <small>
+        Last updated: {{lastUpdated | date:'medium'}}
+        <span class="label label-info" style="margin-left: 10px;">Auto-refreshes every 5 minutes</span>
+      </small>
+    </p>
+  </div>
+</div>
 
-<button class="btn btn-primary" ng-click="manualRefresh()">Refresh Now</button>
-<p>Last updated: {{lastUpdated | date:'medium'}}</p>
-<p>Auto-refreshes every 5 minutes</p>
-
-<table class="table table-striped">
-  <thead>
-  <tr>
-    <th>Server</th>
-    <th>Uptime</th>
-    <th>Users</th>
-    <th>Load Average</th>
-  </tr>
-  </thead>
-  <tbody>
-  <tr ng-repeat="server in uptimeData">
-    <td>{{server.host}}</td>
-    <td>{{server.uptime}}</td>
-    <td>{{server.users}}</td>
-    <td>{{server.load_average}}</td>
-  </tr>
-  </tbody>
-</table>
+<div class="panel panel-default">
+  <div class="panel-body">
+    <div class="table-responsive">
+      <table class="table table-hover">
+        <thead>
+        <tr>
+          <th>Server</th>
+          <th>Uptime</th>
+          <th>Users</th>
+          <th>Load Average</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr ng-repeat="server in uptimeData">
+          <td>
+            <strong tooltip="{{server.ip}}">{{server.host}}</strong>
+          </td>
+          <td>{{server.uptime}}</td>
+          <td>
+              <span ng-class="{'text-success': server.users < 5, 'text-warning': server.users >= 5 && server.users < 10, 'text-danger': server.users >= 10}">
+                {{server.users}}
+              </span>
+          </td>
+          <td>
+              <span ng-class="{'text-success': server.load_average < 1, 'text-warning': server.load_average >= 1 && server.load_average < 5, 'text-danger': server.load_average >= 5}">
+                {{server.load_average}}
+              </span>
+          </td>
+        </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
