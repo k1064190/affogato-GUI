@@ -14,12 +14,16 @@
   <tr>
     <th>Server</th>
     <th>Uptime</th>
+    <th>Users</th>
+    <th>Load Average</th>
   </tr>
   </thead>
   <tbody>
-  <tr ng-repeat="(server, uptime) in uptimeData">
-    <td>{{server}}</td>
-    <td>{{uptime}}</td>
+  <tr ng-repeat="server in uptimeData">
+    <td>{{server.host}}</td>
+    <td>{{server.uptime}}</td>
+    <td>{{server.users}}</td>
+    <td>{{server.load_average}}</td>
   </tr>
   </tbody>
 </table>

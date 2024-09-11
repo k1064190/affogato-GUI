@@ -1,9 +1,10 @@
 angular.module('uptime-controller', ['ngResource'])
   .controller('UptimeController', ['$scope', '$resource', '$interval', function($scope, $resource, $interval) {
-    var Uptime = $resource('/api/uptime');
+    let Uptime = $resource('/api/uptime');
 
     $scope.refreshUptime = function() {
       $scope.uptimeData = Uptime.get();
+      $scope.lastUpdated = new Date();
     };
 
     // 초기 데이터 로드
