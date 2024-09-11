@@ -2,14 +2,14 @@
 
 /**
  * @ngdoc overview
- * @name docker-registry-frontend
+ * @name affogato-frontend
  * @description
  * # docker-registry-frontend
  *
  * Main module of the application.
  */
 angular
-  .module('docker-registry-frontend', [
+  .module('affogato-frontend', [
     'ngAnimate',
     'ngCookies',
     'ngResource',
@@ -37,10 +37,10 @@ angular
     'smart-table',
     'angular.filter',
     'ui.checkbox',
-    'uptime-controller'
+    'uptime-controller',
   ])
   .config(['$routeProvider', '$resourceProvider', 'cfpLoadingBarProvider', '$locationProvider',
-      function($routeProvider, $resourceProvider, cfpLoadingBarProvider, $locationProvider){
+      function($routeProvider, $resourceProvider, cfpLoadingBarProvider, $locationProvider) {
 
      $locationProvider.html5Mode(true);
 
